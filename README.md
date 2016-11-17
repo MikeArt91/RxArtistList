@@ -6,9 +6,15 @@
 APK is availiable for download via that link:
 <a href="https://www.dropbox.com/s/2dzlxsuwh8sw5bz/RxArtistList.apk?dl=0">RxArtistList.apk</a> 
 
-The main purpose of this project was to make a simple app using RxJava and Clean Architecture approach (with MVP pattern)
+The main purpose of this project was to make a simple app using RxJava and Clean Architecture approach.<br>
+This project includes: 
 
-This approach is inspired by <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/">series of articles</a>
+* <b>Patterns</b> Clean Architecture, Reactive, MVP
+* <b>Technologies</b> *REST, OkHTTP, Json, RxJava, Dependency Injection*
+* <b>Libraries</b> *Dagger, Butterknife, Picasso, GSON, Support Library etc*
+* <b>Tests</b> *JUnit, Mockito, Roboelectric, Espresso, Leak Canary*
+
+Clean Architecture approach is inspired by <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/">series of articles</a>
 written by *Fernando Cejas*. <br>
 Also all credits goes to him for the schemes presented below.
 
@@ -50,7 +56,7 @@ Error messages are sent by the callbacks for exception classes (look for them on
 Mikhail Artamonov <br>
 <a href="http://facebook.com/mikeart91">Facebook</a> <br><br>
 
-Special credits to <a href="http://fernandocejas.com/about-me/">Fernando Cejas</a> and his brilliant articles
+Special thanks to <a href="http://fernandocejas.com/about-me/">Fernando Cejas</a> and his brilliant articles
 
 
 
