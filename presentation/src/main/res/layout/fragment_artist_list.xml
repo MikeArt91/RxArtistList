@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:fitsSystemWindows="true"
+                                                 tools:ignore="MergeRootFrame">
+
+  <android.support.design.widget.AppBarLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:theme="@style/AppTheme.AppBarOverlay">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_list"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:title="@string/activity_title_artist_list"
+    />
+
+  </android.support.design.widget.AppBarLayout>
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="?attr/actionBarSize"
+      android:scrollbars="vertical">
+
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/rv_artists"
+
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:padding="@dimen/lv_row_padding"
+      />
+
+  <include
+      layout="@layout/view_progress"
+      />
+
+  <include
+      layout="@layout/view_retry"
+      />
+
+  </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">RxArtistList</string>
+
+  <string name="activity_title_artist_list">Исполнители</string>
+  <string name="activity_title_artist_details">Биография</string>
+
+  <string name="btn_text_load_data">Load Sample Data</string>
+  <string name="btn_text_retry">Retry</string>
+
+  <string name="view_text_description">Биография</string>
+  <string name="utl_not_found">У исполнителя нет сайта</string>
+
+  <string name="string_content_description">Non accessible view</string>
+
+  <plurals name="albums">
+    <item quantity="zero">нет альбомов</item>
+    <item quantity="one">%1$d альбом</item>
+    <item quantity="two">%1$d альбома</item>
+    <item quantity="few">%1$d альбома</item>
+    <item quantity="many">%1$d альбомов</item>
+    <item quantity="other">%1$d альбомов</item>
+  </plurals>
+
+  <plurals name="tracks">
+    <item quantity="zero">нет песен</item>
+    <item quantity="one">%1$d песня</item>
+    <item quantity="two">%1$d песни</item>
+    <item quantity="few">%1$d песни</item>
+    <item quantity="many">%1$d песен</item>
+    <item quantity="other">%1$d песен</item>
+  </plurals>
+
+  //Exception messages
+  <string name="exception_message_generic">There was an application error</string>
+  <string name="exception_message_no_connection">There is no internet connection</string>
+  <string name="exception_message_artist_not_found">Cannot retrieve user data. Check your internet connection</string>
+</resources>
