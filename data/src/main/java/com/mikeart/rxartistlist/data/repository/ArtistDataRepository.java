@@ -39,6 +39,9 @@ public class ArtistDataRepository implements ArtistRepository {
   }
 
   @Override public Observable<Artist> artist(int artistId) {
-    return artists().flatMapIterable(ArtistEntity -> ArtistEntity).filter(UserEntity -> UserEntity.getArtistId() == artistId);
+    // converts Observabe<List> in Observable that emits every particular item from list
+    // obtains particular Artist by ID from the new Observable
+    return artists().flatMapIterable(ArtistEntity -> ArtistEntity)
+            .filter(ArtistEntity -> ArtistEntity.getArtistId() == artistId);
   }
 }
