@@ -1,69 +1,63 @@
-Android-CleanArchitecture [![Build Status](https://travis-ci.org/android10/Android-CleanArchitecture.svg?branch=master)](https://travis-ci.org/android10/Android-CleanArchitecture)
-=========================
+# RxArtistList
+#### A sample project using RxJava and Clean Architecture approach
 
-This is a sample app that is part of a blog post I have written about how to architect android application using the Uncle Bob's clean architecture approach. 
+![rxartislist](https://cloud.githubusercontent.com/assets/15881137/20396272/b6322c28-acf6-11e6-93d5-7140279ee482.png)
 
-[Architecting Android…The clean way?](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/)
+APK is availiable for download via that link:
+<a href="https://www.dropbox.com/s/2dzlxsuwh8sw5bz/RxArtistList.apk?dl=0">RxArtistList.apk</a> 
 
-[Architecting Android…The evolution](http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/)
+The main purpose of this project was to make a simple app using RxJava and Clean Architecture approach.<br>
+This project includes: 
 
-[Tasting Dagger 2 on Android](http://fernandocejas.com/2015/04/11/tasting-dagger-2-on-android/)
+* <b>Patterns</b> Clean Architecture, Reactive, MVP
+* <b>Technologies</b> *REST, OkHTTP, Json, RxJava, Dependency Injection*
+* <b>Libraries</b> *Dagger, Butterknife, Picasso, GSON, Support Library etc*
+* <b>Tests</b> *JUnit, Mockito, Roboelectric, Espresso, Leak Canary*
 
-[Demo video of this sample](http://youtu.be/XSjV4sG3ni0)
+Clean Architecture approach is inspired by <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/">series of articles</a>
+written by *Fernando Cejas*. <br>
+Also all credits goes to him for the schemes presented below.
 
-Clean architecture
------------------
-![http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/](https://github.com/android10/Sample-Data/blob/master/Android-CleanArchitecture/clean_architecture.png)
+## Here is the basic scheme of this architectural approach:
 
-Architectural approach
------------------
-![http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/](https://github.com/android10/Sample-Data/blob/master/Android-CleanArchitecture/clean_architecture_layers.png)
+![Clean Architecture](https://github.com/android10/Sample-Data/raw/master/Android-CleanArchitecture/clean_architecture_layers_details.png)
 
-Architectural reactive approach
------------------
-![http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/](https://github.com/android10/Sample-Data/blob/master/Android-CleanArchitecture/clean_architecture_layers_details.png)
+## How does it work?
+Let's briefly walk through the three main layers of this application: *Data, Domain, Presentation*
+####Data
+Data is the repository level of the application. It's responsible for retreiving data from public JSON provided by Yandex Company,
+caching and providing other layers with the most up-to-date list of artists. List of obtained artists is emitted by observable 
+to the next level.
+####Domain
+Domain layer cathes data from the data layer (obviously). The flow of data out of the domain to presentation is due to the use cases.
+In this application there are two particular use cases: *provide list of artists, provide particular artist by id.*
+####Presentation
+Presentation layer is very straightforward. Presenters are preparing data for the view. View is based on the fragments,
+but their lifecycle is controlled by allocated activities.
 
-Local Development
------------------
+## Dependency Injection (Dagger 2)
+In this project I used Dagger 2 for dependency injection. It is indeed very useful to get rid out of bolerplate code. <br>
+Basics of dependecy injection model used in this app are very well described in 
+<a href="http://fernandocejas.com/2015/04/11/tasting-dagger-2-on-android/">this article</a> <br>
+I will just leave here this scheme as a brief description
 
-Here are some useful Gradle/adb commands for executing this example:
+![Dependency Injection](http://fernandocejas.com/wp-content/uploads/2015/04/composed_dagger_graph1.png)
 
- * `./gradlew clean build` - Build the entire example and execute unit and integration tests plus lint check.
- * `./gradlew installDebug` - Install the debug apk on the current connected device.
- * `./gradlew runUnitTests` - Execute domain and data layer tests (both unit and integration).
- * `./gradlew runAcceptanceTests` - Execute espresso and instrumentation acceptance tests.
- 
-Discussions
------------------
+## What about testing?
+Good question. Here is a bunch of tests on the each layer:
+- <b>Data</b> *Robolectric* + *JUnit* + *Mockito* for unit tests 
+- <b>Domain</b> *JUnit* + *Mockito* for unit tests
+- <b>Presentation</b> *Android Instrumentation* for unit tests + *Espresso* for UI tests
 
-Refer to the issues section: https://github.com/android10/Android-CleanArchitecture/issues
- 
+## Error Handling
+Error messages are sent by the callbacks for exception classes (look for them on each layer)
 
-Code style
------------
+## Developed by
+Mikhail Artamonov <br>
+<a href="http://facebook.com/mikeart91">Facebook</a> <br><br>
 
-Here you can download and install the java codestyle.
-https://github.com/android10/java-code-styles
-
-
-License
---------
-
-    Copyright 2016 Fernando Cejas
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+Special thanks to <a href="http://fernandocejas.com/about-me/">Fernando Cejas</a> and his brilliant articles
 
 
-![http://www.fernandocejas.com](https://github.com/android10/Sample-Data/blob/master/android10/android10_logo_big.png)
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android--CleanArchitecture-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/909)
+
