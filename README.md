@@ -1,7 +1,7 @@
 # RxArtistList
 #### A sample project using RxJava and Clean Architecture approach
 
-![rxartislist](https://cloud.githubusercontent.com/assets/15881137/20396272/b6322c28-acf6-11e6-93d5-7140279ee482.png)
+![rxartislist](https://cloud.githubusercontent.com/assets/15881137/20467245/da7d995a-af94-11e6-837a-e7a6db70313e.png)
 
 APK is availiable for download via that link:
 <a href="https://www.dropbox.com/s/2dzlxsuwh8sw5bz/RxArtistList.apk?dl=0">RxArtistList.apk</a> 
