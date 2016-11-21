@@ -65,16 +65,6 @@ public class ArtistDetailsActivity extends BaseActivity implements HasComponent<
         .build();
   }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch(item.getItemId()){
-      case android.R.id.home:
-        onBackPressed();
-        return true;
-    }
-    return super.onOptionsItemSelected(item);
-  }
-
   @Override public ArtistComponent getComponent() {
     return artistComponent;
   }

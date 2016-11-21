@@ -17,8 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:title="@string/activity_title_artist_list"
-    />
+        app:title="@string/activity_title_artist_list"/>
 
   </android.support.design.widget.AppBarLayout>
 
@@ -30,19 +29,15 @@
 
     <android.support.v7.widget.RecyclerView
       android:id="@+id/rv_artists"
-
+      android:scrollbars="vertical"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:padding="@dimen/lv_row_padding"
-      />
+      android:layout_height="match_parent"/>
 
   <include
-      layout="@layout/view_progress"
-      />
+      layout="@layout/view_progress"/>
 
   <include
-      layout="@layout/view_retry"
-      />
+      layout="@layout/view_retry"/>
 
   </FrameLayout>
 

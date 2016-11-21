@@ -3,11 +3,15 @@ package com.mikeart.rxartistlist.presentation.view.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -47,7 +51,7 @@ public class ArtistDetailsFragment extends BaseFragment implements ArtistDetails
   @Bind(R.id.fab) FloatingActionButton fab_button;
 
   private ActionBar actionBar;
-  private String link;
+  private String link, cover;
 
   public ArtistDetailsFragment() {
     setRetainInstance(true);
@@ -68,10 +72,14 @@ public class ArtistDetailsFragment extends BaseFragment implements ArtistDetails
 
     actionBar = activity.getSupportActionBar();
 
+    setHasOptionsMenu(true);
+
     if(actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
       actionBar.setTitle(null);
     }
+
+    Picasso.with(context()).load(cover).into(iv_cover_big);
 
     return fragmentView;
   }
@@ -106,7 +114,10 @@ public class ArtistDetailsFragment extends BaseFragment implements ArtistDetails
 
   @Override public void renderArtist(ArtistModel artist) {
     if (artist != null) {
-      Picasso.with(context()).load(artist.getCoverBig()).into(iv_cover_big);
+
+      cover = artist.getCoverBig();
+      Picasso.with(context()).load(cover).into(iv_cover_big);
+
       this.tv_fullname.setText(artist.getName());
       this.tv_genres.setText(artist.getGenres());
 
@@ -127,7 +138,7 @@ public class ArtistDetailsFragment extends BaseFragment implements ArtistDetails
 
       this.tv_description.setText(sb.toString());
 
-      link=artist.getLink();
+      link = artist.getLink();
     }
   }
 
@@ -158,7 +169,7 @@ public class ArtistDetailsFragment extends BaseFragment implements ArtistDetails
   }
 
   /**
-   * Loads all artists.
+   * Loads artist's details.
    */
   private void loadArtistDetails() {
     if (this.artistDetailsPresenter != null) {
@@ -188,6 +199,16 @@ public class ArtistDetailsFragment extends BaseFragment implements ArtistDetails
     else{
       Toast.makeText(context(), R.string.utl_not_found, Toast.LENGTH_SHORT).show();
     }
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch(item.getItemId()){
+      case android.R.id.home:
+        getActivity().onBackPressed();
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
 }

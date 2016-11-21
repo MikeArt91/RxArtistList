@@ -6,11 +6,17 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import com.mikeart.rxartistlist.presentation.R;
 
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -87,6 +93,7 @@ public class ArtistListFragment extends BaseFragment implements ArtistListView {
         actionBar.setTitle(R.string.activity_title_artist_list);
     }
 
+    setHasOptionsMenu(true);
 
     return fragmentView;
   }
@@ -195,4 +202,34 @@ public class ArtistListFragment extends BaseFragment implements ArtistListView {
           }
         }
       };
+
+  /**
+   * Options menu with search button
+   */
+
+  @Override
+  public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+   inflater.inflate(R.menu.main_menu, menu);
+
+   final MenuItem searchItem = menu.findItem(R.id.search_widget);
+   final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+   searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+     @Override
+     public boolean onQueryTextChange(String query) {
+       artistsAdapter.getFilter().filter(query);
+       return true;
+     }
+
+     @Override
+     public boolean onQueryTextSubmit(String query) {
+       return false;
+     }
+   });
+
+   super.onCreateOptionsMenu(menu,inflater);
+
+  }
+
+
 }

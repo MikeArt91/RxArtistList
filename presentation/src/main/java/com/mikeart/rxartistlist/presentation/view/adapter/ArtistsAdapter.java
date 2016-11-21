@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -20,23 +22,24 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Adaptar that manages a collection of {@link ArtistModel}.
+ * Adapter that manages a collection of {@link ArtistModel}.
  */
-public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder> {
+public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>
+        implements Filterable{
 
   public interface OnItemClickListener {
     void onArtistItemClicked(ArtistModel artistModel);
   }
 
   private List<ArtistModel> artistsList;
+  private FilterArtists filter;
+
   private final LayoutInflater layoutInflater;
 
   private OnItemClickListener onItemClickListener;
 
   private Context context;
   private int albums, tracks;
-
-
 
   @Inject
   public ArtistsAdapter(Context context) {
@@ -45,7 +48,6 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistVi
     this.context = context;
 
     this.artistsList = Collections.emptyList();
-
   }
 
   @Override public int getItemCount() {
@@ -87,6 +89,15 @@ public class ArtistsAdapter extends RecyclerView.Adapter<ArtistsAdapter.ArtistVi
 
   @Override public long getItemId(int position) {
     return position;
+  }
+
+  @Override
+  public Filter getFilter() {
+    if(filter==null)
+    {
+      filter = new FilterArtists(artistsList,this);
+    }
+    return filter;
   }
 
   public void setArtistsCollection(Collection<ArtistModel> artistsCollection) {

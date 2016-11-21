@@ -4,6 +4,7 @@
 
   <string name="activity_title_artist_list">Исполнители</string>
   <string name="activity_title_artist_details">Биография</string>
+  <string name="action_search">Поиск</string>
 
   <string name="btn_text_load_data">Load Sample Data</string>
   <string name="btn_text_retry">Retry</string>

@@ -38,9 +38,11 @@ public class ArtistDataRepository implements ArtistRepository {
     return artistDataStore.artistEntityList().map(this.artistEntityDataMapper::transform);
   }
 
+  /**
+   * Converts Observabe<List> in Observable that emits every single Artist from list
+   * Obtains particular Artist by ID from the new Observable
+   */
   @Override public Observable<Artist> artist(int artistId) {
-    // converts Observabe<List> in Observable that emits every single Artist from list
-    // obtains particular Artist by ID from the new Observable
     return artists().flatMapIterable(Artist -> Artist)
             .filter(Artist -> Artist.getArtistId() == artistId);
   }
