@@ -12,7 +12,7 @@ This project includes:
 * <b>Patterns</b> Clean Architecture, Reactive, MVP
 * <b>Technologies</b> *REST, OkHTTP, Json, RxJava, Dependency Injection*
 * <b>Libraries</b> *Dagger, Butterknife, Picasso, GSON, Support Library etc*
-* <b>Tests</b> *JUnit, Mockito, Roboelectric, Espresso, Leak Canary*
+* <b>Tests</b> *JUnit, Mockito, Robolectric, Espresso, Leak Canary*
 
 Clean Architecture approach is inspired by <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/">series of articles</a>
 written by *Fernando Cejas*. <br>
